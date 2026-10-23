@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CalculatorTest {
 
@@ -60,5 +64,43 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         assertEquals(-20, calculator.multiply(-4, 5));
+    }
+
+    @Test
+    void dividePositiveNumbers() {
+        Calculator calculator = new Calculator();
+
+        assertEquals(5, calculator.divide(10, 2));
+    }
+
+    @Test
+    void divideNegativeNumbers() {
+        Calculator calculator = new Calculator();
+
+        assertEquals(-5, calculator.divide(-10, 2));
+    }
+
+    @Test
+    void divideByZeroThrowsException() {
+        Calculator calculator = new Calculator();
+
+        assertThrows(
+                ArithmeticException.class,
+                () -> calculator.divide(10, 0)
+        );
+    }
+
+    @Test
+    void evenNumberReturnsTrue() {
+        Calculator calculator = new Calculator();
+
+        assertTrue(calculator.isEven(8));
+    }
+
+    @Test
+    void oddNumberReturnsFalse() {
+        Calculator calculator = new Calculator();
+
+        assertFalse(calculator.isEven(7));
     }
 }
